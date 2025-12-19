@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    image: rest-service:latest
+    environment:
+      - PORT=3000
+      - INFO_MESSAGE=${INFO_MESSAGE:-Hello World}
+      - NODE_ENV=${NODE_ENV:-production}
+    ports:
+      - "${PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

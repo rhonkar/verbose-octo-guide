@@ -1,0 +1,16 @@
+{
+    "name": "rest-service",
+    "version": "1.0.0",
+    "description": "Minimal REST service with /health and /api/v1/info, configurable via environment variables.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "engines": {
+        "node": ">=22"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "helmet": "^7.0.0"
+    }
+}
