@@ -7,7 +7,7 @@ COPY package.json ./
 RUN apk add --no-cache curl && npm install --production && rm -rf /var/cache/apk/*
 
 # copy app
-COPY index.js ./
+COPY ./src/index.js ./
 
 # non-root user
 RUN addgroup -S app && adduser -S -G app app

@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const os = require('os');
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-const INFO_MESSAGE = process.env.INFO_MESSAGE || 'Hello World';
+const INFO_MESSAGE = process.env.INFO_MESSAGE || 'Empty Info Message';
 const HOST = process.env.HOST || '0.0.0.0';
 
 const app = express();
@@ -16,9 +16,9 @@ app.get('/health', (_req, res) => res.status(200).json({ message: 'OK' }));
 
 app.get('/api/v1/info', (_req, res) => {
     res.json({
+        message: INFO_MESSAGE,
         timestamp: new Date().toISOString(),
-        hostname: os.hostname(),
-        info: INFO_MESSAGE
+        hostname: os.hostname()
     });
 });
 

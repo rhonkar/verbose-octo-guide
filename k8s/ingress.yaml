@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rest-service-ingress
+  namespace: rest-service
+spec:
+  tls:
+  - hosts:
+    - rest-service.net
+    secretName: rest-service-tls
+  rules:
+  - host: rest-service.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rest-service
+            port:
+              number: 3000

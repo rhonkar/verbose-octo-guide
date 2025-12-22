@@ -1,10 +1,10 @@
 services:
   app:
     build: .
-    image: rest-service:latest
+    image: localhost:32000/rest-service:1.0
     environment:
       - PORT=3000
-      - INFO_MESSAGE=${INFO_MESSAGE:-Hello World}
+      - INFO_MESSAGE=${INFO_MESSAGE:-Wisdom, Courage, Justice, Temperance}
       - NODE_ENV=${NODE_ENV:-production}
     ports:
       - "${PORT:-3000}:3000"

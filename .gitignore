@@ -1,6 +1,10 @@
 # Node dependencies
 node_modules/
 
+# Certificates
+*.crt
+*.key
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

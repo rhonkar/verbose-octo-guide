@@ -30,6 +30,38 @@ You can override environment variables when running compose, for example:
 ```bash
 INFO_MESSAGE="Custom message" PORT=4000 docker compose up --build
 ```
+Build and Push to registry
+
+```bash
+docker compose build
+docker image push localhost:32000/rest-service:1.0
+```
+
+Deploy in K8S
+
+```bash
+kubectl apply -f k8s/
+```
+
+Or apply them individually
+
+```bash
+kubectl apply -f k8s/namespace.yaml
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/ingress.yaml
+```
+
+Access in web browser
+
+1. In WSL run hostname -I to get WSL IP (something like 172.x.x.x)
+2. Add WSL IP to local host table: 172.x.x.x rest-service.net
+3. Open
+
+```bash
+    https://rest-service.net/health/
+    https://rest-service.net/api/v1/info/
+```
 
 Notes / Best practices implemented
 - Configuration entirely via environment variables.
