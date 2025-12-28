@@ -37,7 +37,7 @@ docker compose build
 docker image push localhost:32000/rest-service:1.0
 ```
 
-Deploy in K8S
+Deploy in K8S with kubectl
 
 ```bash
 kubectl apply -f k8s/
@@ -50,6 +50,26 @@ kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 kubectl apply -f k8s/ingress.yaml
+```
+
+Delete K8S resources
+```bash
+kubectl delete -f k8s/deployment.yaml
+kubectl delete -f k8s/service.yaml
+kubectl delete -f k8s/ingress.yaml
+kubectl delete -f k8s/namespace.yaml
+```
+
+Deploy in K8S with helm
+```bash
+kubectl apply -f k8s/namespace.yaml
+# create TLS secret
+helm install rest-service -n rest-service ./charts/rest-service
+```
+
+Undeploy with helm
+```bash
+helm uninstall rest-service -n rest-service
 ```
 
 Access in web browser
