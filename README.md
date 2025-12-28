@@ -47,6 +47,7 @@ Or apply them individually
 
 ```bash
 kubectl apply -f k8s/namespace.yaml
+# create TLS secret
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 kubectl apply -f k8s/ingress.yaml
@@ -89,3 +90,26 @@ Notes / Best practices implemented
 - Minimal dependencies and a small base image (`node:22-alpine`).
 - Healthcheck present in the image and compose to ensure container readiness.
 - Graceful shutdown on `SIGINT`/`SIGTERM`.
+
+## Appendix
+
+1. Create self-signed certificate for K8S Ingress controller
+
+    ```bash
+    openssl req -x509 -nodes -days 365 -newkey rsa:4096 \
+    -keyout rest-service.key \
+    -out rest-service.crt \
+    -subj "/CN=rest-service.net" \
+    -addext "subjectAltName=DNS:rest-service.net,DNS:www.rest-service.net,DNS:localhost"
+    ```
+
+2. Create TLS secret for K8S Ingress controller (create namespace beforehand)
+
+    ```bash
+    kubectl create secret tls rest-service-tls \
+        --namespace rest-service \
+        --key rest-service.key \
+        --cert rest-service.crt
+    ```
+
+3. Install the crt file in the local browser as a trusted CA.
