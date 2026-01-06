@@ -55,4 +55,5 @@ jobs:
         shell: bash
         run: |
           argocd login ${{ vars.ARGOCD_SERVER }} --insecure --grpc-web --username ${{ vars.ARGOCD_USERNAME }} --password ${{ secrets.ARGOCD_PASSWORD }}
-          argocd app sync ${{ vars.ARGOCD_APPNAME }} --grpc-web --helm-set image.tag=${{ needs.ci.outputs.commit_id }}
+          argocd app set ${{ vars.ARGOCD_APPNAME }} -p image.tag=${{ needs.ci.outputs.commit_id }}
+          argocd app sync ${{ vars.ARGOCD_APPNAME }} --grpc-web
