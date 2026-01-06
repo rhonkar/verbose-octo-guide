@@ -18,7 +18,8 @@ app.get('/api/v1/info', (_req, res) => {
     res.json({
         message: INFO_MESSAGE,
         timestamp: new Date().toISOString(),
-        hostname: os.hostname()
+        hostname: os.hostname(),
+        trigger: '0001',
     });
 });
 
