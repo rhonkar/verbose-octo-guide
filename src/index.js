@@ -19,7 +19,7 @@ app.get('/api/v1/info', (_req, res) => {
         message: INFO_MESSAGE,
         timestamp: new Date().toISOString(),
         hostname: os.hostname(),
-        trigger: '0006',
+        trigger: '0007',
     });
 });
 
