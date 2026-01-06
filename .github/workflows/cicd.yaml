@@ -54,6 +54,7 @@ jobs:
           argocd login ${{ vars.ARGOCD_SERVER }} --insecure --grpc-web --username ${{ vars.ARGOCD_USERNAME }} --password ${{ secrets.ARGOCD_PASSWORD }}
           argocd app set ${{ vars.ARGOCD_APPNAME }} -p image.tag="${{ needs.ci.outputs.commit_id }}"
           if [ -n "${{ vars.INFO_MESSAGE }}" ]; then
+            argocd app set ${{ vars.ARGOCD_APPNAME }} -p env[0].name="INFO_MESSAGE"
             argocd app set ${{ vars.ARGOCD_APPNAME }} -p env[0].value="${{ vars.INFO_MESSAGE }}"
           fi
           argocd app sync ${{ vars.ARGOCD_APPNAME }} --grpc-web
