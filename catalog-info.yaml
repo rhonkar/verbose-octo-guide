@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rest-service
+  description: A RESTful service.
+  annotations:
+    github.com/project-slug: rhonkar/verbose-octo-guide
+spec:
+  type: service
+  owner: guests
+  lifecycle: experimental
