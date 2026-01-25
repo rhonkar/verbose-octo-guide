@@ -5,6 +5,7 @@ metadata:
   description: A RESTful service.
   annotations:
     github.com/project-slug: rhonkar/verbose-octo-guide
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   owner: guests
